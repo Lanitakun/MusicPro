@@ -32,8 +32,9 @@
         <ion-text>{{ producto.description }}</ion-text>
       </ion-item>
     </ion-card-content>
-    <ion-card-content>
-      <ion-button id="BotonProducto">Agregar al carrito</ion-button>
+    <ion-card-content id="Botones">
+      <ion-button (click)="realizarPago()">Comprar</ion-button>
+      <ion-button id="BotonCarrito">Agregar al carrito</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

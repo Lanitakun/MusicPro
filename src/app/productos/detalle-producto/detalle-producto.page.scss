@@ -1,3 +1,16 @@
-#BotonProducto{
-    width: 100%;
+#Botones{
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+
+    //que cada boton ocupe el 50% de la pantalla
+
+    #BotonComprar{
+        width: 50%;
+    }
+
+    #BotonCarrito{
+        width: 50%;
+    }
 }
+

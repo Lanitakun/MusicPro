@@ -80,5 +80,6 @@ export class ProductosPage {
       }
     });
     return await modal.present();
+    
   }
 }
