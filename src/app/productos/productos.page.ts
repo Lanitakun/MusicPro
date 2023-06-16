@@ -5,8 +5,24 @@ import { Component } from '@angular/core';
   templateUrl: 'productos.page.html',
   styleUrls: ['productos.page.scss']
 })
-export class Tab1Page {
+export class ProductosPage {
 
+  mostrarListaProductos: boolean = false;
+  
   constructor() {}
+
+  mostrarLista() {
+    this.mostrarListaProductos = !this.mostrarListaProductos;
+  }
+
+  ocultarLista() {
+    this.mostrarListaProductos = false;
+  }
+
+  buscarProductos(event: any) {
+  }
+
+
+
 
 }
