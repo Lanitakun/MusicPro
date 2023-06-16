@@ -2,23 +2,31 @@
   <ion-toolbar>
     <ion-searchbar
       placeholder="Buscar productos"
-      (ionFocus)="mostrarLista()"
-      (ionBlur)="ocultarLista()"
-      (keyup)="buscarProductos($event)"
+      (ionInput)="buscarProductos($event)"
     ></ion-searchbar>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Resultados del searchbar -->
+  <ion-list id="ListaProductos" *ngIf="mostrarListaProductos && productos.length > 0">
+    <ion-item id="Producto" *ngFor="let producto of productos | filter: searchTerm">
+      <!-- Resto del código -->
+    </ion-item>
+  </ion-list>
 
-  <!--Boton para probar-->
-  <ion-button>Test</ion-button>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Boton para probar -->
+  <ion-item id="Producto" *ngFor="let producto of productos | filter: searchQuery">
+    <ion-card>
+      <img alt="Imagen de instrumento" [src]="producto.image" />
+      <ion-card-header>
+        <ion-card-title>{{ producto.name }}</ion-card-title>
+        <ion-card-subtitle>{{ producto.brand }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ producto.price }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-button id="BotonProducto" (click)="verProducto(producto)">Ver producto</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
 </ion-content>

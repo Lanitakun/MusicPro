@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="cerrarModal()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ producto.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Mostrar los datos del producto -->
+  <ion-card>
+    <img alt="Imagen de instrumento" [src]="producto.image" />
+    <ion-card-header>
+      <ion-card-title>{{ producto.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-text>{{ producto.category }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Marca</ion-label>
+        <ion-text>{{ producto.brand }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Precio</ion-label>
+        <ion-text>{{ producto.price }}</ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Descripción</ion-label>
+        <ion-text>{{ producto.description }}</ion-text>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-button id="BotonProducto">Agregar al carrito</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
