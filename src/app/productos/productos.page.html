@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Productos disponibles</ion-title>
+    </ion-toolbar>
+  </ion-header>
   <!-- Resultados del searchbar -->
   <ion-list id="ListaProductos" *ngIf="mostrarListaProductos && productos.length > 0">
     <ion-item id="Producto" *ngFor="let producto of productos | filter: searchTerm">
@@ -15,10 +20,12 @@
     </ion-item>
   </ion-list>
 
+
   <!-- Boton para probar -->
   <ion-item id="Producto" *ngFor="let producto of productos | filter: searchQuery">
     <ion-card>
-      <img alt="Imagen de instrumento" [src]="producto.image" />
+      <!-- imagen alternativa: https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg-->
+      <img alt="Imagen del producto" src="{{ producto.image }}" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';">
       <ion-card-header>
         <ion-card-title>{{ producto.name }}</ion-card-title>
         <ion-card-subtitle>{{ producto.brand }}</ion-card-subtitle>
@@ -30,3 +37,4 @@
     </ion-card>
   </ion-item>
 </ion-content>
+

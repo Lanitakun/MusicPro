@@ -10,7 +10,7 @@
 <ion-content [fullscreen]="true">
   <!-- Mostrar los datos del producto -->
   <ion-card>
-    <img alt="Imagen de instrumento" [src]="producto.image" />
+    <img alt="Imagen de instrumento" [src]="producto.image" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';" />
     <ion-card-header>
       <ion-card-title>{{ producto.name }}</ion-card-title>
     </ion-card-header>
@@ -29,7 +29,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Descripción</ion-label>
-        <ion-text>{{ producto.description }}</ion-text>
+        <ion-text id="desc">{{ producto.description }}</ion-text>
       </ion-item>
     </ion-card-content>
     <ion-card-content id="Botones">

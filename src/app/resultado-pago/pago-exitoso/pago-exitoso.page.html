@@ -1,18 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Pago Exitoso</ion-title>
+    <ion-title class="ion-text-center">Pago Exitoso</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ productoSeleccionado?.name }}</ion-card-title>
+      <ion-card-title>¡Gracias por tu compra!</ion-card-title>
+      <ion-card-subtitle>¡Tu pago ha sido exitoso!</ion-card-subtitle>
+
     </ion-card-header>
-    <ion-card-content>
-      <p>Descripción: {{ productoSeleccionado?.description }}</p>
-      <p>Precio: {{ productoSeleccionado?.price }}</p>
-      <!-- Otros detalles del producto -->
+    <ion-card-content id="datos">
+      <!--Imagen-->
+      <img alt="Imagen de instrumento" [src]="productoSeleccionado?.image" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';" />
+      <ion-item>
+        <ion-label>Producto comprado:</ion-label>
+        <ion-text> {{ productoSeleccionado?.name }} </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Marca:</ion-label>
+        <ion-text> {{ productoSeleccionado?.brand }} </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Monto Pagado:</ion-label>
+        <ion-text> {{ productoSeleccionado?.price }} </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label>Fecha de Compra:</ion-label>
+        <ion-text id="fecha"></ion-text>
+      </ion-item>
     </ion-card-content>
   </ion-card>
+
+  <ion-button expand="block" color="primary" routerLink="/tabs/productos">Ir a la pagina principal</ion-button>
 </ion-content>

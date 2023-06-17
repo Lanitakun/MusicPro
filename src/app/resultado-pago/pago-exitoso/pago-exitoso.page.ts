@@ -17,7 +17,6 @@ export class PagoExitosoPage implements OnInit {
   ngOnInit() {
     const productoIdString = localStorage.getItem('selectedProductId');
     this.productoId = parseInt(productoIdString || '0', 10);
-  
     this.obtenerProductos();
   }
   
@@ -26,13 +25,18 @@ export class PagoExitosoPage implements OnInit {
       (data) => {
         this.productos = data;
         this.buscarProductoSeleccionado();
-        console.log(this.productoSeleccionado);
-        console.log(this.productoId);
       },
       (error) => {
         console.log(error);
       }
     );
+    //se agrega la fecha de compra almacenada en el local storage al html en el id #fecha
+    document.getElementById('fecha')!.innerHTML = localStorage.getItem('accounting_date')!;
+    //se da formato a la fecha que llega en este formato 'MMDD' a 'MM/DD'
+    let fecha = document.getElementById('fecha')!.innerHTML;
+    let mes = fecha.substring(0, 2);
+    let dia = fecha.substring(2, 4);
+    document.getElementById('fecha')!.innerHTML = dia + '/' + mes;
   }
   
   buscarProductoSeleccionado() {
