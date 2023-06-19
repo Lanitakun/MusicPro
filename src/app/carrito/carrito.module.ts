@@ -1,18 +1,18 @@
-import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CarritoPage } from './carrito.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+
+import { IonicModule } from '@ionic/angular';
 
 import { CarritoPageRoutingModule } from './carrito-routing.module';
 
+import { CarritoPage } from './carrito.page';
+
 @NgModule({
   imports: [
-    IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
+    IonicModule,
     CarritoPageRoutingModule
   ],
   declarations: [CarritoPage]

@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-carrito',
-  templateUrl: 'carrito.page.html',
-  styleUrls: ['carrito.page.scss']
+  templateUrl: './carrito.page.html',
+  styleUrls: ['./carrito.page.scss'],
 })
-export class CarritoPage {
+export class CarritoPage implements OnInit {
 
-  constructor() {}
+  constructor() { }
+
+  ngOnInit() {
+  }
 
 }

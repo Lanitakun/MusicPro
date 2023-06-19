@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('../productos/productos.module').then(m => m.ProductosPageModule)
       },
       {
-        path: 'carrito',
-        loadChildren: () => import('../carrito/carrito.module').then(m => m.CarritoPageModule)
+        path: 'categorias',
+        loadChildren: () => import('../categorias/categorias.module').then(m => m.CategoriasPageModule)
       },
       {
         path: 'tab3',

@@ -82,4 +82,11 @@ export class ProductosPage {
     return await modal.present();
     
   }
+
+  irAlCarrito() {
+    // al presionar el botón de carrito, se debe redirigir a la página del carrito
+
+    
+
+  }
 }

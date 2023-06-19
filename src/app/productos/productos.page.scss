@@ -1,49 +1,49 @@
-#Producto { 
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-rows: auto; /* Ajustarse al contenido */
+  }
+  
+.producto-col {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    width: fit-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    &:hover{
-        transform: scale(1.01);
-    }
-    #Imagen{
-        width: 20%;
-        height: auto;
-        margin: auto, 10px;
-        object-fit: cover;
-        border-radius: 10px;
-        flex-direction: column;
-    }
-
-    #Nombre{
-        font-size: 1.2rem;
-        font-weight: bold;
-        text-align: center;
-        margin: 10px 0;
-    }
-
-    #BotonProducto{
-        width: 100%;
-        height: 40px;
-        background-color: #000;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        &:hover{
-            color: #000;
-            border: 1px solid #000;
-        }
-    }
-
-    ion-card{
-        width: 100%;
-    }
-    
-
+    justify-content: space-between;
+    height: 270px;
 }
+  
+.producto-col ion-card-title {
+    font-size: 0.5em;
+    margin-left: 0px;
+}
+  
+.producto-col ion-card-content {
+    flex: 1;
+}
+
+.precio-producto {
+    color: green;
+}
+
+ion-button {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    margin: 1px;
+}
+img {
+    width: 100em;
+    height: 5em;
+}
+
+.button-carrito{
+    height: 30px;
+    width: 20%;
+}
+  
