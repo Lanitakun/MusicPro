@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../productos.model';
-
+import { CarritoService } from 'src/app/servicios/carrito.service';
+import { CarritoPage } from 'src/app/carrito/carrito.page';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -14,13 +16,14 @@ export class DetalleProductoPage implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private http: HttpClient
+    private http: HttpClient,
+    private carritoService: CarritoService,
+    public toastController: ToastController,
   ) { }
   
 
   ngOnInit() {
     localStorage.setItem('selectedProductId', this.producto.id.toString());
-    console.log(localStorage.getItem('selectedProductId'));
   }
 
   cerrarModal() {
@@ -46,6 +49,31 @@ export class DetalleProductoPage implements OnInit {
       console.error(error);
       // Maneja el error adecuadamente
     }
+  }
+
+  agregarAlCarrito() {
+    this.carritoService.agregarProducto(this.producto);
+    this.mostrarToast(`${this.producto.name} agregado al carrito`);
+  }
+
+  async irAlCarrito() {
+    const modal = await this.modalController.create({
+      component: CarritoPage,
+      componentProps: {
+      }
+    });
+  
+    await modal.present();
+  }
+
+  async mostrarToast(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000, // Duración del toast en milisegundos
+      position: 'bottom' // Posición del toast ('top', 'bottom', 'middle')
+    });
+  
+    await toast.present();
   }
   
 

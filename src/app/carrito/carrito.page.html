@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>carrito</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="cerrarModal()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>CARRITO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-list>
+    <ion-item *ngFor="let producto of productosCarrito">
+      <!--thumbnail del producto-->
+      <ion-thumbnail slot="start">
+        <img alt="Imagen de instrumento" [src]="producto.image" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';" />
+      </ion-thumbnail>
+      <!-- Mostrar los detalles del producto -->
+      <ion-label>{{ producto.name }}</ion-label>
+      <ion-text>{{ producto.price }}</ion-text>
+    </ion-item>
+  </ion-list>
+
+  <ion-footer>
     <ion-toolbar>
-      <ion-title size="large">carrito</ion-title>
+      <ion-title>TOTAL: ${{ total.toLocaleString() }}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="realizarPago()">Pagar total</ion-button>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-header>
+  </ion-footer>
 </ion-content>
+

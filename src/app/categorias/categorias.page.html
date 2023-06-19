@@ -1,17 +1,24 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title class="ion-text-center">
-      Categorias
-    </ion-title>
+    <ion-title>Categorías</ion-title>
+    <ion-buttons class="button-carrito" slot="end">
+      <ion-button (click)="irAlCarrito()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Categorias</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Categorias"></app-explore-container>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let cat of categoria; let i = index;">
+        <ion-card (click)="seleccionarCategoria(cat)">
+          <ion-card-content>
+            <h2>{{ cat.name }}</h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

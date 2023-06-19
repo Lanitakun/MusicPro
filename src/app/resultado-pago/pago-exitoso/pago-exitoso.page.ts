@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from 'src/app/productos/productos.model';
 import { HttpClient } from '@angular/common/http';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pago-exitoso',
@@ -12,7 +13,9 @@ export class PagoExitosoPage implements OnInit {
   productos: Producto[] = [];
   productoSeleccionado: Producto | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    public toastController: ToastController,
+    ) { }
 
   ngOnInit() {
     const productoIdString = localStorage.getItem('selectedProductId');
@@ -41,6 +44,16 @@ export class PagoExitosoPage implements OnInit {
   
   buscarProductoSeleccionado() {
     this.productoSeleccionado = this.productos.find(producto => producto.id === this.productoId);
+  }
+
+  async mostrarToast(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000, // Duración del toast en milisegundos
+      position: 'bottom' // Posición del toast ('top', 'bottom', 'middle')
+    });
+  
+    await toast.present();
   }
   
   

@@ -1,0 +1,19 @@
+
+ion-card {
+    height: 100%;
+  }
+  
+  ion-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  

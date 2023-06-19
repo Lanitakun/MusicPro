@@ -18,6 +18,14 @@ const routes: Routes = [
     path: 'categorias',
     loadChildren: () => import('./categorias/categorias.module').then( m => m.CategoriasPageModule)
   },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
+  {
+    path: 'detalle-categoria',
+    loadChildren: () => import('./categorias/detalle-categoria/detalle-categoria.module').then( m => m.DetalleCategoriaPageModule)
+  },
 
 ];
 @NgModule({

@@ -3,6 +3,7 @@ import { Producto } from '../productos/productos.model';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { DetalleProductoPage } from './detalle-producto/detalle-producto.page';
+import { CarritoPage } from '../carrito/carrito.page';
 
 @Component({
   selector: 'app-productos',
@@ -83,10 +84,14 @@ export class ProductosPage {
     
   }
 
-  irAlCarrito() {
-    // al presionar el botón de carrito, se debe redirigir a la página del carrito
-
-    
-
+  async irAlCarrito() {
+    const modal = await this.modalController.create({
+      component: CarritoPage,
+      componentProps: {
+        // Puedes pasar cualquier dato adicional al componente modal si es necesario
+      }
+    });
+  
+    await modal.present();
   }
 }

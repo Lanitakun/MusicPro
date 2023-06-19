@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-resultado-pago',
@@ -13,7 +14,8 @@ export class ResultadoPagoPage{
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public toastController: ToastController,
   ) {}
 
   ngOnInit() {
@@ -39,12 +41,22 @@ export class ResultadoPagoPage{
         //se espera a que se cargue la pagina para mostrar el mensaje
         localStorage.setItem('accounting_date', resultado.accounting_date);
         setTimeout(() => {
-          alert('Pago exitoso');
+          this.mostrarToast('Pago realizado con éxito');
         }, 1000);
       }
     } catch (error) {
       this.router.navigate(['/resultado-pago/error-pago']);
-      alert('Error al procesar el pago. Por favor, intenta nuevamente.');
+      this.mostrarToast('No se pudo procesar el pago');
     }
+  }
+
+  public async mostrarToast(mensaje: string) {
+    const toast = await this.toastController.create({
+      message: mensaje,
+      duration: 2000, // Duración del toast en milisegundos
+      position: 'bottom' // Posición del toast ('top', 'bottom', 'middle')
+    });
+  
+    await toast.present();
   }
 }
