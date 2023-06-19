@@ -1,23 +1,40 @@
-#Botones{
-    display: flex;
-    justify-content: space-around;
-    border-radius: 10px;
-
-    //que cada boton ocupe el 50% de la pantalla
-
-    #BotonComprar{
-        width: 50%;
-    }
-
-    #BotonCarrito{
-        width: 50%;
-    }
-}
 
 #desc{
-    padding-top: 30px;
     text-align: justify;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
+img{
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.btnPagar{
+    //agrega un flex asis
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //agrega un tamaño
+    width: 100%;
+    height: 50px;
+    flex-basis: 50%;
+}
+
+.btnCarrito{
+    //agrega un flex asis
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //agrega un tamaño
+    width: 100%;
+    height: 50px;
+    flex-basis: 50%;
+}
+
+.descriptitulo{
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
+}
