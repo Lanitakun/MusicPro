@@ -1,15 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-searchbar
+    <ion-searchbar 
+      [debounce]="250"
       placeholder="Buscar productos"
       (ionInput)="buscarProductos($event)"
+      animated="true"
+      class="rounded-full"
     ></ion-searchbar>
     <ion-buttons class="button-carrito" slot="end">
       <ion-button (click)="irAlCarrito()">
         <ion-icon name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
+    
   </ion-toolbar>
+  <ion-list class="lista-resultados" *ngIf="searchTerm && productos.length > 0">
+    <ion-item *ngFor="let producto of productos | filter: searchTerm" (click)="verProducto(producto)">
+      <ion-thumbnail slot="start">
+        <img [src]="producto.image" (error)="producto.image='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg'">
+      </ion-thumbnail>
+      <ion-label>{{ producto.name }}</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-spinner class="loader" *ngIf="isLoadingProductos"></ion-spinner>
 </ion-header>
 
 
@@ -21,15 +34,18 @@
   </ion-header>
   <!-- Resultados del searchbar -->
   <ion-list id="ListaProductos" *ngIf="mostrarListaProductos && productos.length > 0">
-    <ion-item id="Producto" *ngFor="let producto of productos | filter: searchTerm">
-      <!-- Resto del código -->
+    <ion-item *ngFor="let producto of productos | filter: searchTerm" (click)="verProducto(producto)">
+      <ion-thumbnail slot="start">
+        <img [src]="producto.image" (error)="producto.image='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg'">
+      </ion-thumbnail>
+      <ion-label>{{ producto.name }}</ion-label>
     </ion-item>
   </ion-list>
 
 
   <!-- Boton para probar -->
-  <ion-grid class="productos-grid">
-    <ion-card *ngFor="let producto of productos | filter: searchQuery" class="producto-col">
+  <ion-grid class="productos-grid" *ngIf="!isLoadingProductos">
+    <ion-card *ngFor="let producto of productos" class="producto-col" (click)="verProducto(producto)">
       <!-- imagen alternativa: https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg -->
       <img alt="Imagen del producto" [src]="producto.image" (error)="producto.image='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg'">
       <ion-card-header>
@@ -37,10 +53,7 @@
         <ion-card-subtitle>{{ producto.brand }}</ion-card-subtitle>
         <ion-card-subtitle class="precio-producto">${{ producto.price }}</ion-card-subtitle>
       </ion-card-header>
-      <ion-card-content>
-        <ion-button id="BotonProducto" expand="full" (click)="verProducto(producto)">VER PRODUCTO</ion-button>
-      </ion-card-content>
     </ion-card>
   </ion-grid>
+  <ion-spinner class="loader" *ngIf="isLoadingProductos"></ion-spinner>
 </ion-content>
-

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { Producto } from '../productos.model';
+import { Producto } from '../../models/productos.model';
 import { CarritoService } from 'src/app/servicios/carrito.service';
 import { CarritoPage } from 'src/app/carrito/carrito.page';
 import { ToastController } from '@ionic/angular';
@@ -38,6 +38,7 @@ export class DetalleProductoPage implements OnInit {
   
     try {
       const url = 'http://localhost:5000/transaccion';
+      console.log(url,datos);
       const resultado = await this.http.post<any>(url, datos).toPromise();
       const token = resultado.token; // Token de la transacción
       const urlPago = resultado.url; // URL de formulario de pago Webpay

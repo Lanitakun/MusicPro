@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Producto } from 'src/app/productos/productos.model';
+import { Producto } from 'src/app/models/productos.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,10 @@ export class CarritoService {
 
   vaciarCarrito() {
     this.productos = [];
+  }
+
+  eliminarProducto(producto: Producto) {
+    //elimina el producto del carrito, pero solo el que fue seleccionado, si hay uno igual no lo elimina
+    this.productos = this.productos.filter(productoCarrito => productoCarrito.id !== producto.id);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/productos/productos.model';
+import { Producto } from 'src/app/models/productos.model';
 import { HttpClient } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 

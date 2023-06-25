@@ -56,10 +56,11 @@ export class CarritoPage implements OnInit {
   calcularTotal() {
     this.total = 0;
     this.productosCarrito.forEach(producto => {
-      const precio = parseInt(producto.price.replace(/[^0-9]/g, ''));
+      const precio = parseInt(String(producto.price).replace(/[^0-9]/g, ''));
       this.total += precio;
     });
   }
+  
   
 
   async mostrarToast(mensaje: string) {
@@ -71,6 +72,15 @@ export class CarritoPage implements OnInit {
   
     await toast.present();
   }
+
+  eliminarProducto(producto: any) {
+    this.carritoService.eliminarProducto(producto);
+    this.productosCarrito = this.carritoService.obtenerCarrito();
+    this.calcularTotal();
+    this.mostrarToast('Producto eliminado del carrito');
+  }
+
+  
   
 
 }

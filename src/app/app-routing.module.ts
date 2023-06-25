@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'detalle-categoria',
     loadChildren: () => import('./categorias/detalle-categoria/detalle-categoria.module').then( m => m.DetalleCategoriaPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule) // Agregar esta línea
+  },
 
 ];
 @NgModule({

@@ -5,7 +5,7 @@
   }
   
 .producto-col {
-    background-color: #444;
+    background-color: #ffffff17;
     color: #fff;
     border-radius: 5px;
     font-size: 1.5rem;
@@ -47,3 +47,10 @@ img {
     width: 20%;
 }
   
+.rounded-full {
+    border-radius: 15px !important;
+}
+
+ion-toolbar{
+    border-radius: 10px
+}

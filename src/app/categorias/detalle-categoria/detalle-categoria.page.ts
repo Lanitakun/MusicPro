@@ -2,7 +2,7 @@ import { Categoria } from './../categorias.model';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
-import { Producto } from 'src/app/productos/productos.model';
+import { Producto } from 'src/app/models/productos.model';
 import { DetalleProductoPage } from 'src/app/productos/detalle-producto/detalle-producto.page';
 import { CarritoPage } from 'src/app/carrito/carrito.page';
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Producto } from '../productos/productos.model';
+import { Producto } from '../models/productos.model';
 import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { DetalleProductoPage } from './detalle-producto/detalle-producto.page';
@@ -17,6 +17,9 @@ export class ProductosPage {
   productos: Producto[] = [];
   mostrarListaProductos: boolean = false;
   todosLosProductos: Producto[] = []; // Nueva propiedad agregada
+
+  isLoadingProductos = false;
+
   
   constructor(private http: HttpClient, private modalController: ModalController) {}
 
