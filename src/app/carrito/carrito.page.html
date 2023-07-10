@@ -11,22 +11,26 @@
   <ion-list>
     <ion-item class="item" *ngFor="let producto of productosCarrito">
       <!--thumbnail del producto-->
-      <ion-thumbnail slot="start">
+      <ion-thumbnail slot="start" class="producto-thumbnail">
         <img alt="Imagen de instrumento" [src]="producto.image" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';" />
       </ion-thumbnail>
       <!-- Mostrar los detalles del producto -->
-      <ion-label>{{ producto.name }}</ion-label>
-      <ion-text slot="end">{{ producto.price }}</ion-text>
-      <ion-button slot="end" (click)="eliminarProducto(producto)">Eliminar</ion-button>
+      <ion-label>
+        <h2>{{ producto.name }}</h2>
+        <ion-text class="precio">${{ producto.price.toLocaleString() }}</ion-text>
+      </ion-label>
+      <ion-button slot="end" (click)="eliminarProducto(producto)" class="boton-eliminar">
+        <ion-icon name="close" color="danger"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 
   <ion-footer>
     <ion-toolbar>
-      <ion-title>TOTAL: </ion-title>
-      <ion-title slot="end">${{ total.toLocaleString() }}</ion-title>
+      <ion-title slot="start" class="total">Total: </ion-title>
+      <ion-text slot="end" class="precio">${{ total.toLocaleString() }}</ion-text>
     </ion-toolbar>
     <ion-button class="pagarBtn" (click)="realizarPago()">Pagar total</ion-button>
   </ion-footer>
+  
 </ion-content>
-

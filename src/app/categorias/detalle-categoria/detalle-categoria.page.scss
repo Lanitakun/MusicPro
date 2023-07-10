@@ -5,7 +5,8 @@
   }
   
 .producto-col {
-    background-color: #444;
+    //transicion de color de fondo
+    background-color: #00000050;
     color: #fff;
     border-radius: 5px;
     font-size: 1.5rem;
@@ -13,7 +14,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 270px;
 }
   
 .producto-col ion-card-title {
@@ -26,8 +26,14 @@
 }
 
 .precio-producto {
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 5px;
+    position: relative;
+    overflow: hidden;
     color: green;
-}
+    background-color: #ffffff17;
+  }
 
 ion-button {
     position: fixed;
@@ -40,6 +46,8 @@ ion-button {
 img {
     width: 100em;
     height: 5em;
+    background-color: #fff;
+    border-radius: 10px;
 }
 
 .button-carrito{

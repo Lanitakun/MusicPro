@@ -17,7 +17,7 @@
   <ion-card>
     <img alt="Imagen de instrumento" [src]="producto.image" onerror="this.src='https://t4.ftcdn.net/jpg/04/73/25/49/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg';" />
     <ion-card-header>
-      <ion-card-title>{{ producto.name }}</ion-card-title>
+      <ion-card-title class="ion-text-center">{{ producto.name }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item>
@@ -30,7 +30,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Precio:</ion-label>
-        <ion-text>${{ producto.price }}</ion-text>
+        <ion-text class="precio-producto">${{ producto.price.toLocaleString() }}</ion-text>
       </ion-item>
       <ion-item>
         <ion-text class="descriptitulo ion-text-center">Descripción:</ion-text>
@@ -39,9 +39,25 @@
         <ion-text id="desc">{{ producto.description }}</ion-text>
       </ion-item>
     </ion-card-content>
+    <!-- Mostrar datos de stock -->
+  <ion-card *ngIf="stocks.length > 0">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Stock Disponible</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let stock of stocks">
+          <ion-label>{{ stock.store_name }}</ion-label>
+          <ion-text>{{ stock.quantity }}</ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
     <ion-card-content id="Botones">
       <ion-button class="btnPagar" (click)="realizarPago()">Comprar</ion-button>
       <ion-button class="btnCarrito" (click)="agregarAlCarrito()">Agregar al carrito</ion-button>
     </ion-card-content>
   </ion-card>
+
+  
 </ion-content>

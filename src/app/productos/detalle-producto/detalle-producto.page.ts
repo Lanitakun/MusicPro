@@ -13,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class DetalleProductoPage implements OnInit {
   @Input() producto!: Producto;
+  stocks: any[] = []; // Variable para almacenar los datos de stock
 
   constructor(
     private modalController: ModalController,
@@ -24,6 +25,7 @@ export class DetalleProductoPage implements OnInit {
 
   ngOnInit() {
     localStorage.setItem('selectedProductId', this.producto.id.toString());
+    this.obtenerStock();
   }
 
   cerrarModal() {
@@ -31,7 +33,7 @@ export class DetalleProductoPage implements OnInit {
   }
 
   async realizarPago() {
-    const monto = this.producto.price.replace(/[^0-9]/g, '');
+    const monto = this.producto.price.toString().replace(/[^0-9]/g, '');
     const datos = {
       monto: monto,
     };
@@ -42,7 +44,6 @@ export class DetalleProductoPage implements OnInit {
       const resultado = await this.http.post<any>(url, datos).toPromise();
       const token = resultado.token; // Token de la transacción
       const urlPago = resultado.url; // URL de formulario de pago Webpay
-      const idLibro = this.producto.id;
       const urlConParametros = urlPago + '?token_ws=' + token;
       // Se redirige a la página externa de pago de Transbank con el token como parámetro
       window.location.replace(urlConParametros);
@@ -76,6 +77,18 @@ export class DetalleProductoPage implements OnInit {
   
     await toast.present();
   }
-  
 
+  async obtenerStock() {
+    try {
+      const idProducto = this.producto.id;
+      const url = `https://musicprosolutions.tech/backend/api/product_stock/${idProducto}`;
+      const response = await this.http.get<any>(url).toPromise();
+      this.stocks = response.stocks; // Asignar los datos de stock a la variable
+      console.log(this.stocks);
+    } catch (error) {
+      console.error(error);
+      // Maneja el error adecuadamente
+    }
+  }
+  
 }

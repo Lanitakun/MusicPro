@@ -9,7 +9,7 @@
     <ion-list>
       <ion-item>
         <ion-label position="floating">Nombre de usuario:</ion-label>
-        <ion-input aria-label="email" type="text" [(ngModel)]="nombreUsuario"></ion-input>
+        <ion-input aria-label="email" type="text" [(ngModel)]="email"></ion-input>
       </ion-item>
     
       <ion-item>
@@ -19,7 +19,7 @@
   
       <ion-button id="login-button" expand="block" slot="start" name="login"  (click)="iniciarSesion()">Iniciar sesión</ion-button>
   
-      <ion-button id="register-button" expand="block" (click)="registrarUsuario()">Registrarse</ion-button>
+      <ion-button id="register-button" expand="block" >Registrarse</ion-button>
   
     </ion-list>
     

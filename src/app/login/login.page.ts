@@ -1,7 +1,7 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { ToastController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { usuario } from '../models/users.model';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +9,12 @@ import { usuario } from '../models/users.model';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  users = usuario;
-  nombreUsuario = '';
+  apiUrl = 'https://musicprosolutions.tech/backend/api/login';
+  email = '';
   contrasena = '';
 
   constructor(
+    private http: HttpClient,
     private router: Router,
     private toastController: ToastController
   ) {}
@@ -21,57 +22,40 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   iniciarSesion() {
-    // Si los campos están vacíos, no se puede iniciar sesión
-    if (this.nombreUsuario == '' || this.contrasena == '') {
+    if (this.email === '' || this.contrasena === '') {
       this.crearToast('Debes rellenar los campos');
     } else {
-      // Se obtiene el usuario desde el nombre de usuario ingresado
-      let user = this.users.find(user => user.nombreUsuario == this.nombreUsuario);
-      if (user) {
-        // Si el usuario existe, se compara la contraseña ingresada con la contraseña del usuario para logearse
-        if (user.contrasena == this.contrasena) {
-          // Si la contraseña es correcta, se guarda el nombre de usuario en el local storage y se redirige a la página de libros
-          localStorage.setItem('usuario', this.nombreUsuario);
-          // Se verifica el tipo de usuario para redirigir a la página correspondiente
-          if (user.tipoUsuario == 'admin') {
-            this.router.navigate(['/tabs']);
-          } else {
-            this.router.navigate(['tabs']);
-          }
-        } else {
-          this.crearToast('Contraseña incorrecta');
-        }
-      } else {
-        this.crearToast('Usuario no encontrado');
-      }
-    }
-  }
+      const body = {
+        email: this.email,
+        password: this.contrasena,
+      };
 
-  registrarUsuario() {
-    // Se verifica que los campos no estén vacíos
-    if (this.nombreUsuario == '' || this.contrasena == '') {
-      this.crearToast('Debes rellenar los campos');
-    } else {
-      // Se verifica que el nombre de usuario no exista
-      let user = this.users.find(user => user.nombreUsuario == this.nombreUsuario);
-      if (user) {
-        this.crearToast('El nombre de usuario ya existe');
-      } else {
-        // Si el nombre de usuario no existe, se crea el usuario y se guarda en el arreglo de usuarios
-        let newUser = {
-          id: this.users.length + 1,
-          nombreUsuario: this.nombreUsuario,
-          contrasena: this.contrasena,
-          nombre: '',
-          apellido: '',
-          email: '',
-          tipoUsuario: 'user'
+      this.http.post(this.apiUrl, body, { observe: 'response' }).subscribe(
+        (response: HttpResponse<any>) => {
+          if (response.body != "Usuario Invalido"){
+            if (response.body != "Password incorrecta") {
+              // Autenticación exitosa, guardar datos en el almacenamiento local o servicio de autenticación
+              localStorage.setItem('username', JSON.stringify(response.body.username));
+              localStorage.setItem('email', JSON.stringify(response.body.email))
+              localStorage.setItem('nombre', JSON.stringify(response.body.nombre))
+              localStorage.setItem('apellido', JSON.stringify(response.body.apellido))
+              localStorage.setItem('tipo', JSON.stringify(response.body.tipo))
+              this.router.navigate(['/tabs']);
+              console.log(response.body);
+            } else {
+              // Autenticación fallida
+              this.crearToast('Contraseña incorrecta');
+              
+            }
+          } else {
+            this.crearToast('Usuario no registrado');
+          }
+        },
+        (error) => {
+          console.log(error);
+          this.crearToast('Ha ocurrido un error');
         }
-        this.users.push(newUser);
-        this.crearToast('Usuario creado correctamente');
-        // Se redirige a la página de libros
-        this.router.navigate(['login']);
-      }
+      );
     }
   }
 

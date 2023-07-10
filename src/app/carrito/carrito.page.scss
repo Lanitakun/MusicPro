@@ -5,3 +5,18 @@
 .item{
     height: 100px;
 }
+
+.producto-thumbnail {
+    border-radius: 50%;
+  }
+
+.precio{
+    color: green;
+}
+
+.boton-eliminar {
+    --color: red;
+    --background: transparent;
+}
+
+  
