@@ -21,6 +21,8 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
+
+  //Esto debo moverlo a un LoginService
   iniciarSesion() {
     if (this.email === '' || this.contrasena === '') {
       this.crearToast('Debes rellenar los campos');
