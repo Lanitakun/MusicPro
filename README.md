@@ -53,6 +53,3 @@ Para utilizar la aplicación, simplemente navega a <http://localhost:4200> en tu
 
 Contribuciones
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para cualquier cambio o mejora que desees realizar.
-
-Licencia
-MIT
