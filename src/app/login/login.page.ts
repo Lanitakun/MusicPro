@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  apiUrl = 'https://musicprosolutions.tech/backend/api/login';
+  apiUrl = 'https://musicprosolutions.tech/backend/api/login';  // Esto va en variables de entorno pero por simplicidad lo dejo aquí
   email = '';
   contrasena = '';
 
