@@ -7,7 +7,8 @@ MusicPro es una aplicación de comercio electrónico para la compra de instrumen
 - Compra de instrumentos musicales
 - Pasarela de pago con Transbank
 - Visualización de stock de productos por tienda y región
--
+- Categorización de instrumentos
+- Carrito de compras
 
 ## Requisitos
 
@@ -70,6 +71,10 @@ Para iniciar el servidor proxy, ejecute el siguiente comando en la terminal:
 ```bash
 python server.py
 ```
+
+## Información adicional
+
+Si el proyecto no funciona es porque la API se deshabilitó
 
 Contribuciones
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para cualquier cambio o mejora que desees realizar.
