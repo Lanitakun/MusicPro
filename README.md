@@ -53,6 +53,24 @@ La aplicación ahora debería estar corriendo en <http://localhost:4200>.
 Uso
 Para utilizar la aplicación, simplemente navega a <http://localhost:4200> en tu navegador.
 
+## Instalación en android
+
+Siguiendo todos los pasos anteriores tambien estan estos pasos adicionales
+
+Asegúrate de que tu dispositivo Android esté conectado a tu computadora o que tu emulador Android esté en ejecución.
+
+Construye la aplicación para Android:
+
+```bash
+ionic cordova build android
+```
+
+Abre Android Studio y selecciona "Open an existing Android Studio project."
+
+Navega al directorio "platforms/android" dentro del directorio del proyecto y haz clic en OK.
+
+Una vez que Android Studio haya sincronizado el proyecto, puedes ejecutar la aplicación seleccionando Run > Run 'app'.
+
 ## Servidor Proxy
 
 Dentro de la raíz del proyecto, encontrará un archivo llamado `server.py`. Este archivo actúa como un servidor proxy para la pasarela de pago de Transbank.
