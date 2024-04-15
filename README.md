@@ -46,10 +46,10 @@ o
 ng serve
 ```
 
-La aplicación ahora debería estar corriendo en <http://localhost:8100>.
+La aplicación ahora debería estar corriendo en <http://localhost:4200>.
 
 Uso
-Para utilizar la aplicación, simplemente navega a <http://localhost:8100> en tu navegador.
+Para utilizar la aplicación, simplemente navega a <http://localhost:4200> en tu navegador.
 
 Contribuciones
 Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para cualquier cambio o mejora que desees realizar.
